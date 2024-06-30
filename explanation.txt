@@ -8,9 +8,7 @@ each sample is appended with its numeric label:
                - Normal = 0
 
 then before passing the data through the Neural Network, the labels are extracted in a labels array
-            - the labels arwe extracted to keep the indexing of the labels same as that of the sample, such that 
-              the sample receives the correct label since the index of the sample and the index of the label is 
-              the same in their respective arrays, i.e, training_data and labels respectively.
+            - the labels arwe extracted to keep the indexing of the labels same as that of the sample, such that the sample receives the correct label since the index of the sample and the index of the label is the same in their respective arrays, i.e, training_data and               labels respectively.
 
 the images are then passed through a Deep CNN of the following architecture:-
 
@@ -79,6 +77,6 @@ dense layer neurons = 3 (OUTPUT LAYER)
 (MODEL PARAMETERS)
 optimizer = Adamax (learning_rate = 0.001)
 Loss = sparse_Categorical_crossentropy
-performance metric = Accuracy
+performance metric = 'Accuracy'
 
-after training through the entire train data, the model is saved and then called again to be tested on the test data
+after training through the entire train data, the model is saved and then called again to be tested on the test data.
