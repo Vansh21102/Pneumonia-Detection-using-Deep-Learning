@@ -34,7 +34,7 @@ def create_training_data():
     for img in os.listdir(bacteria_path):
         try:
             img_array = cv2.imread(os.path.join(bacteria_path, img))
-            new_img = cv2.resize(img_array,(224,224))                       # cv2.resize() returns an image of the specified dimensions hence ALWAYS assign it to a variable
+            new_img = cv2.resize(img_array,(224,224))                      # cv2.resize() returns an image of the specified dimensions hence ALWAYS assign it to a variable
             training_data.append([new_img,2])                              # 2 for bacterial images
         except:
             pass
@@ -60,12 +60,6 @@ train_data = create_training_data()
 test_data = create_testing_data()
 
 train_data, eval_data = train_test_split(train_data, test_size = 0.2, random_state = 42)
-
-print(len(eval_data))
-print(len(train_data))
-
-# plt.imshow(train_data[7][0])
-# plt.show()
 
 X = []
 Y = []
@@ -131,8 +125,7 @@ model.summary()
 
 model.fit(X_train, Y_train, validation_data = (X_Val, Y_Val), epochs = 3)
 
-model.save('pneumonia_detection5.h5')     ##5th save of model at 60% acc
-
+#model testing
+model.save('pneumonia_detection5.h5')
 test = tf.keras.models.load_model('pneumonia_detection5.h5')
-
 test.evaluate(X_test, Y_test)
