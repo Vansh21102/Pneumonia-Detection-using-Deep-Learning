@@ -2,6 +2,16 @@ file mgmt.py is first run on the raw dataset downloaded from kaggle to segregate
 the images from various classes are loaded into python using OpenCV and functionalities of the OS libraries of python.
 the images are then stored in an array contaiing the pixel values of the image of the dimension image_height X image_width X no. of channels (H,W,C) in case of grayscale images the value of C would be 1.
 all the images are resized to a size of 224 X 224 (H X W) having 3 channels, i.e, we have taken the full RGB image for computation.
+each sample is appended with its numeric label:
+               - bacterial = 2
+               - Viral = 1
+               - Normal = 0
+
+then before passing the data through the Neural Network, the labels are extracted in a labels array
+            - the labels arwe extracted to keep the indexing of the labels same as that of the sample, such that 
+              the sample receives the correct label since the index of the sample and the index of the label is 
+              the same in their respective arrays, i.e, training_data and labels respectively.
+
 the images are then passed through a Deep CNN of the following architecture:-
 
 Model: "sequential"
